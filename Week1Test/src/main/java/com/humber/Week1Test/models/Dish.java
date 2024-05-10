@@ -8,6 +8,7 @@ public class Dish {
     private Double price;
     private String category;
 
+    // constructor
     public Dish(int id, String name, Double price, String category) {
         this.id = id;
         this.name = name;
