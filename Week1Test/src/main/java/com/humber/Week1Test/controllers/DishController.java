@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController // all methods inside returns JSON format
-// #Controller returns the HTML doc
+// #Controller returns the HTML doc // looks for HTML view templates folder
+
+
 public class DishController {// has to be in a class spring  BEAN
     @Autowired
     private DishService dishService;
