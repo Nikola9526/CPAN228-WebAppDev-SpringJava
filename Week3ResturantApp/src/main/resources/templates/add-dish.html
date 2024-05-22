@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Dish</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"> <!-- here it is @ symbol -->
+
+
+</head>
+
+<body>
+
+
+
+<div class="main">
+    <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking -->
+   <h1>Add A DISH</h1>
+    <div class="content">
+        <form> <!-- Can get it from bootstrap -->
+            <div style="margin-bottom: 20px">
+                <label style="margin-right: 20px">ID</label><input type="text"  />
+            </div>
+            <div style="margin-bottom: 20px">
+                <label style="margin-right: 20px">Name</label><input type="text"  />
+            </div>
+            <div style="margin-bottom: 20px">
+                <label style="margin-right: 20px">Category</label><input type="text"  />
+            </div>
+            <div style="margin-bottom: 20px">
+                <label style="margin-right: 20px">Price</label><input type="number"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+    </div>
+    <footer th:include="@{/fragments/footer.html}"></footer>
+
+
+</div>
+
+</body>
+</html>
+<!-- View -->
