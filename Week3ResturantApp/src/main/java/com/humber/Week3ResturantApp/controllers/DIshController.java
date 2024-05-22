@@ -1,5 +1,6 @@
 package com.humber.Week3ResturantApp.controllers;
 
+import com.humber.Week3ResturantApp.models.Dish;
 import com.humber.Week3ResturantApp.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,7 @@ public class DIshController {
     // Add a method to get all dishes
 
 
-    // home page
+    //home-page
     @GetMapping("/home")// for methods
 
     public String home(Model model){
@@ -39,8 +40,17 @@ public class DIshController {
     @GetMapping("/dishes")
     public String getAllDishes(Model model){ // model makes it avabile to the view
         model.addAttribute("dishes", dishService.getAllDishes());
+        // to pass dishes from back to front end
         return "menu";
         //return dishService.getAllDishes();  // return view
+    }
+
+    // add a method
+        // open up a add a dish page (usally POST put get now)
+    @GetMapping("/add-dish")
+    public String addDish(Model model){
+        model.addAttribute("dish", new Dish());
+        return "add-dish";
     }
 
 
