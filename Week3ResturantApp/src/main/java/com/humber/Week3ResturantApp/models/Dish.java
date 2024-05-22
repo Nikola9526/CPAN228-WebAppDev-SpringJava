@@ -1,4 +1,4 @@
-package com.humber.Week2ThymeLeafApp.models;
+package com.humber.Week3ResturantApp.models;
 
 import lombok.*;
 // For Created Model

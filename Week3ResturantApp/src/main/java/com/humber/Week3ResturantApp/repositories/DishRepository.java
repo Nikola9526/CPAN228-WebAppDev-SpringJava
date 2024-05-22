@@ -1,7 +1,6 @@
-package com.humber.Week2ThymeLeafApp.repositories;
+package com.humber.Week3ResturantApp.repositories;
 // importing Model Package Dish
-import com.humber.Week2ThymeLeafApp.models.Dish;
-import lombok.Getter;
+import com.humber.Week3ResturantApp.models.Dish;
 
 import java.util.ArrayList;
 import java.util.List;

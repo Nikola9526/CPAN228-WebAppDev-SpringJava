@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="79aab4dc-7fb8-467d-a4bf-4bbe15febe88" name="Changes" comment="created new Project">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humber/Week2ThymeLeafApp/Week2ThymeLeafAppApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humber/Week2ThymeLeafApp/controllers/DIshController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humber/Week2ThymeLeafApp/models/Dish.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humber/Week2ThymeLeafApp/repositories/DishRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humber/Week2ThymeLeafApp/services/DishService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/menu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/humber/Week2ThymeLeafApp/Week2ThymeLeafAppApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2gWUfQKnTnslTfQcqyI79BB58UA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Maven.Week2ThymeLeafApp [compile].executor": "Run",
+    "Maven.Week2ThymeLeafApp [install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.Week2ThymeLeafAppApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/nikola/Documents/Semester4/CPAN228-WebAppDev/HumberWorkSpace/CPAN228-WebAppDev-SpringJava/Week3ThymeLeafApp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Week2ThymeLeafAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="Week2ThymeLeafApp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.humber.Week2ThymeLeafApp.Week2ThymeLeafAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79aab4dc-7fb8-467d-a4bf-4bbe15febe88" name="Changes" comment="" />
+      <created>1715812930131</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715812930131</updated>
+      <workItem from="1715812931195" duration="19955000" />
+      <workItem from="1716412932540" duration="2497000" />
+    </task>
+    <task id="LOCAL-00001" summary="Created new Project">
+      <option name="closed" value="true" />
+      <created>1715812982679</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715812982679</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created new class model Dish">
+      <option name="closed" value="true" />
+      <created>1715814369339</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715814369339</updated>
+    </task>
+    <task id="LOCAL-00003" summary="created new class Repo Dish Repo">
+      <option name="closed" value="true" />
+      <created>1715814378734</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715814378734</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added dished list to add dishes, added method to return all dished">
+      <option name="closed" value="true" />
+      <created>1715817043309</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715817043309</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added Class Dish COntroller added endpoints apis">
+      <option name="closed" value="true" />
+      <created>1715817090507</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715817090507</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added Class DishServic  created method to call dishes return dishes">
+      <option name="closed" value="true" />
+      <created>1715817131224</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715817131224</updated>
+    </task>
+    <task id="LOCAL-00007" summary="created home.html with thyemleaf to show name">
+      <option name="closed" value="true" />
+      <created>1715817154240</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715817154240</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created new Project">
+      <option name="closed" value="true" />
+      <created>1716412961888</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716412961888</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created new Project" />
+    <MESSAGE value="created new class model Dish" />
+    <MESSAGE value="created new class Repo Dish Repo" />
+    <MESSAGE value="added dished list to add dishes, added method to return all dished" />
+    <MESSAGE value="added Class Dish COntroller added endpoints apis" />
+    <MESSAGE value="added Class DishServic  created method to call dishes return dishes" />
+    <MESSAGE value="created home.html with thyemleaf to show name" />
+    <MESSAGE value="created new Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="created new Project" />
+  </component>
+</project>

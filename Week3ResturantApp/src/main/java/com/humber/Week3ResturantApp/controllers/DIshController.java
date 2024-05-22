@@ -1,17 +1,12 @@
-package com.humber.Week2ThymeLeafApp.controllers;
+package com.humber.Week3ResturantApp.controllers;
 
-import com.humber.Week2ThymeLeafApp.models.Dish;
-import com.humber.Week2ThymeLeafApp.services.DishService;
-import lombok.extern.apachecommons.CommonsLog;
+import com.humber.Week3ResturantApp.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 //@RestController use this if interagteing with React then call GET, POST API
 @Controller
