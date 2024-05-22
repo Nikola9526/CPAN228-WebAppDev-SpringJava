@@ -50,8 +50,12 @@ public class DIshController {
     @GetMapping("/add-dish")
     public String addDish(Model model){
         model.addAttribute("dish", new Dish());
-        return "add-dish";
+        return "add-dish";// that is the view
+        // it is get it just opens the form //one get to open page //one post to post data
     }
+
+
+
 
 
 
