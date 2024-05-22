@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 //@RestController use this if interagteing with React then call GET, POST API
@@ -50,8 +52,18 @@ public class DIshController {
     @GetMapping("/add-dish")
     public String addDish(Model model){
         model.addAttribute("dish", new Dish());
-        return "add-dish";// that is the view
+        return "add-dish";// that is the view .html
         // it is get it just opens the form //one get to open page //one post to post data
+    }
+
+    // save the dish use post // is fine same end pont because one is get/post
+    @PostMapping("/add-dish")
+    public String addDish( @ModelAttribute Dish dish, Model model){
+        // saving in db
+        // dishService.saveDish(dish)
+        //model.addAttribute("dishes", dishService.getAllDishes()); // using DB you use this
+        model.addAttribute("dishes", dish);// showing what you added
+         return "menu"; // return menu show what you added
     }
 
 
