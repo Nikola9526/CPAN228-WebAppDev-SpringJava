@@ -14,12 +14,10 @@ public class Item {
     private int year_creation;
     private double price;
 
+
+
+
 }
 
-enum Brand {
-    Balenciaga,
-    StoneIsland,
-    Dior,
-    Guess
-}
+
 // String test =  brand.StoneIsland
