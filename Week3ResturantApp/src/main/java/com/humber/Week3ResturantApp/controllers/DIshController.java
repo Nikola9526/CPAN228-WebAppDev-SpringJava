@@ -47,28 +47,31 @@ public class DIshController {
         //return dishService.getAllDishes();  // return view
     }
 
-    // add a method
-        // open up a add a dish page (usally POST put get now)
-    @GetMapping("/add-dish")
+    //add a method
+
+        //GET
+        // open up add a dish page (usually POST put get now)
+    @GetMapping("/add-dish")// Add a Dish Page "View- add-dish"
     public String addDish(Model model){
         model.addAttribute("dish", new Dish());
         return "add-dish";// that is the view .html
         // it is get it just opens the form //one get to open page //one post to post data
     }
 
-    // save the dish use post // is fine same end pont because one is get/post
+    // save the dish //use post // is fine same end pont because one is get/post
+        //POST
     @PostMapping("/add-dish")
     public String addDish( @ModelAttribute Dish dish, Model model){
         // saving in db
         // dishService.saveDish(dish)
         //model.addAttribute("dishes", dishService.getAllDishes()); // using DB you use this
-        model.addAttribute("dishes", dish);// showing what you added
+
+        if(dish.getPrice()>10){
+            model.addAttribute("error", "Price must be Less than 10");
+            return "add-dish";
+            //returns the same page dose not redirect
+        } //else redirect to menu and show added dish
+        model.addAttribute("dishes", dish);
          return "menu"; // return menu show what you added
     }
-
-
-
-
-
-
-}
+}//class
