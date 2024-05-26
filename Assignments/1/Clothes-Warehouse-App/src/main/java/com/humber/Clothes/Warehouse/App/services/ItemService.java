@@ -8,10 +8,8 @@ import java.util.List;
 @Service
 
 public class ItemService {
-
-    //return  item repo class
+    //return item repo class
     public List<Item> getAllItems(){
         return ItemRepository.getItems();
     }
-
 }

@@ -8,7 +8,7 @@ import java.util.*;
 
 public class ItemRepository {
     private static List<Item> items = new ArrayList<>();
-    //creating dummy data for the  warehouse
+    //creating dummy data for the warehouse
     static {
         items.add(
                 Item.builder().id(1).name("Summer Dress").brand(Brand.StoneIsland).
