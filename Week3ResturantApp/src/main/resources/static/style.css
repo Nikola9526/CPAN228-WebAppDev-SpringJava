@@ -12,7 +12,8 @@
 
 #title {
     color: cornflowerblue;
-    font-size: 40px;
+    font-size: 35px;
+    padding-bottom: 10px;
 }
 .form-label{
     font-weight: bold;
