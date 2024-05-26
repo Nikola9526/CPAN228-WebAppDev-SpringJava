@@ -1,12 +1,14 @@
 package com.humber.Clothes.Warehouse.App.controllers;
-
-
+import com.humber.Clothes.Warehouse.App.models.Brand;
+import com.humber.Clothes.Warehouse.App.models.Item;
 import com.humber.Clothes.Warehouse.App.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ItemController {
 
     @Autowired
-
     private ItemService itemService;
 
     //constant name
@@ -43,4 +44,17 @@ public class ItemController {
         return "inventory";
     }
 
+    @GetMapping("/add-item")
+    public String addItem(Model model){
+        model.addAttribute("item", new Item());
+        model.addAttribute("brands", Brand.values());
+        return "add-item";// view html page
+    }
+
+    // POST
+    @PostMapping("add-item")
+    public String addItem(@ModelAttribute Item item, Model model){
+        model.addAttribute("items",item);
+        return "inventory";
+    }
 }// class
