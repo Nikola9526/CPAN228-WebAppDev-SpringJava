@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public class DishService {
     // Add a method to get all dishes
-    public List<Dish> getAllDishes() {
+    /*public List<Dish> getAllDishes() {
         // get
         return DishRepository.getDishes();
-    }
+    }*/
 
 }//Class
