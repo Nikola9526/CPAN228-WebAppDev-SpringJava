@@ -1,49 +1,38 @@
 package com.humber.Week4JDBCApp.repositories;
 // importing Model Package Dish
 import com.humber.Week4JDBCApp.models.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository // need to add to make class a BEAN // or @Autowire will not work
 public class DishRepository {
+    @Autowired
 
-    //@Getter
-    private static List<Dish> dishes = new ArrayList<>();
+    JdbcTemplate template; // inject this by adding @Autowire
+    // save a dish
 
-    static {
-        //dishes.add(new Dish(1,"","",1.2)); // making dish object 1st way
-        dishes.add(
-                Dish.builder().id(1).name("Burger").category("Non-Veg").price(5.00)
-                        .build()
-                // we use builder pattern shows what the field is named
+    // get all dishes
 
-        );
-        dishes.add(
-                Dish.builder().id(2).name("Pizza").category("Sausage").price(15.00)
-                        .build()
-                // we use builder pattern shows what the field is named
+    public  List <Dish> getDishes (){
+        String sql = "SELECT * FROM dishes";
 
-        );
-        dishes.add(
-                Dish.builder().id(3).name("Poutine").category("Fires,Cheese, Gravy").price(3.00)
-                        .build()
-                // we use builder pattern shows what the field is named
+        RowMapper<Dish> mapper = new RowMapper<Dish>() {
 
-        );
-        dishes.add(
-                Dish.builder().id(4).name("Meatballs").category("Meat").price(25.00)
-                        .build()
-                // we use builder pattern shows what the field is named
+            @Override
+            public Dish mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return null;
+            }
+        };
 
-        );
-        dishes.add(
-                Dish.builder().id(5).name("Mac and Cheese").category("Pasta").price(18.00).build()
-        );
-    }//static
-    //add method that returns
-    // method returns the added dishes so it can called from Service class
-    public static List<Dish> getDishes() {
-        return dishes;
+         template.query(sql, mapper);
     }
+
+
 }// class
 //repo done next service
