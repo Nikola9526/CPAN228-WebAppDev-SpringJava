@@ -22,11 +22,11 @@ public class ItemRepository {
         );
 
         items.add(
-                Item.builder().id(3).name("Velour Track Suit").brand(Brand.Balenciaga).year_creation(2024)
+                Item.builder().id(3).name("Track Suit").brand(Brand.Balenciaga).year_creation(2024)
                         .price(90.00).build()
         );
     }
-    // return method
+    //return method
     public static List<Item> getItems() {
         return items;
     }

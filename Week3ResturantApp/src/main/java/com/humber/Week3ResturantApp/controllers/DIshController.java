@@ -27,7 +27,6 @@ public class DIshController {
 
     // Add a method to get all dishes
 
-
     //home-page
     @GetMapping("/home")// for methods
 
@@ -36,7 +35,6 @@ public class DIshController {
         return "home";
     }
     // will return JSON data (home only)
-
 
 
     @GetMapping("/dishes")
@@ -48,7 +46,6 @@ public class DIshController {
     }
 
     //add a method
-
         //GET
         // open up add a dish page (usually POST put get now)
     @GetMapping("/add-dish")// Add a Dish Page "View- add-dish"
@@ -58,7 +55,7 @@ public class DIshController {
         // it is get it just opens the form //one get to open page //one post to post data
     }
 
-    // save the dish //use post // is fine same end pont because one is get/post
+    // save the dish //use post // same end pont because one is get/post
         //POST
     @PostMapping("/add-dish")
     public String addDish( @ModelAttribute Dish dish, Model model){

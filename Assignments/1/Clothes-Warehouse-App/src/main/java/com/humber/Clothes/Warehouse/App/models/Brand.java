@@ -7,5 +7,4 @@ public enum Brand {
     Guess,
     LouisVuitton,
     Coach
-
 }

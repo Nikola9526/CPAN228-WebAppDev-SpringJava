@@ -10,15 +10,12 @@
 <div class="main">
     <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking -->
 
-
     <div class="content">
-        <h1 id="title" >Add A Dish</h1>
+        <h1 id="title">Add A Dish</h1>
         <!-- Display error if dish price is > 10 -->
-        <div th:if="${error}" class="alert alert-danger" th:text="${error}">
-        </div>
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
             <div class="form" >
                 <form method="POST" th:action="@{add-dish}" th:object="${dish}"> <!-- Action: That is a post end pont  -->
-
                     <!-- That is thyme leaf form binding -->
                     <div class="form-group">
                         <label class="form-label" for="exampleInputPassword1">ID</label>
@@ -35,37 +32,18 @@
                         <input type="text" th:field="*{category}" class="form-control"  placeholder="Enter Category">
                     </div>
                     <div class="form-group">
-                        <label class="form-label"  for="exampleInputPassword1">Price</label>
-                        <input type="number" th:field="*{price}" class="form-control" id="exampleInputPassword1" placeholder="$">
+                        <label  class="form-label" for="exampleInputPassword1">Price</label>
+                      <!--th:if="${error}" class="error" th:text="${error}" -->
+                            <input  type="number" th:field="*{price}" class="form-control" id="exampleInputPassword1" placeholder="$" >
+
                         <!-- th:field="*{price}" THat is thyme leaf form binding -->
                     </div>
-
                     <button style="margin-top: 10px" type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-
-
-        <!-- <form>  Can get it from bootstrap
-            <div style="margin-bottom: 20px">
-                <label style="margin-right: 20px">ID</label><input type="text"  />
-            </div>
-            <div style="margin-bottom: 20px">
-                <label style="margin-right: 20px">Name</label><input type="text"  />
-            </div>
-            <div style="margin-bottom: 20px">
-                <label style="margin-right: 20px">Category</label><input type="text"  />
-            </div>
-            <div style="margin-bottom: 20px">
-                <label style="margin-right: 20px">Price</label><input type="number"  />
-            </div>
-            <button type="submit" class="btn btn-primary">Add</button>
-        </form> -->
-
     </div>
     <footer th:include="@{/fragments/footer.html}"></footer>
-
 </div>
-
 </body>
 </html>
 <!-- View -->

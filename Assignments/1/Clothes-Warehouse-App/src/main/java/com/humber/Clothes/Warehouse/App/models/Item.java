@@ -1,5 +1,4 @@
 package com.humber.Clothes.Warehouse.App.models;
-
 import lombok.*;
 
 @Data
@@ -13,11 +12,5 @@ public class Item {
     private Brand brand;
     private int year_creation;
     private double price;
-
-
-
-
 }
-
-
 // String test =  brand.StoneIsland
