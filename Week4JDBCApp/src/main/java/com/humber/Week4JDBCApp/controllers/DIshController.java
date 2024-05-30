@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 //@RestController use this if interagteing with React then call GET, POST API
 @Controller
@@ -29,46 +26,55 @@ public class DIshController {
 
     //home-page
     @GetMapping("/home")// for methods
-
     public String home(Model model){
         model.addAttribute("restaurantName", name); // two parameters
         return "home";
     }
     // will return JSON data (home only)
 
-
     @GetMapping("/dishes")
-    public String getAllDishes(Model model){ // model makes it avabile to the view
+    public String getAllDishes(Model model, @RequestParam (required = false) String message){ // model makes it available to the view
         model.addAttribute("dishes", dishService.getAllDishes());
+        model.addAttribute("message", message);
         // to pass dishes from back to front end
         return "menu";
         //return dishService.getAllDishes();  // return view
     }
 
     //add a method
-        //GET
-        // open up add a dish page (usually POST put get now)
+    //GET
+    // open up add a dish page (usually POST put get now)
     @GetMapping("/add-dish")// Add a Dish Page "View- add-dish"
-    public String addDish(Model model){
+    public String addDish(Model model ){
         model.addAttribute("dish", new Dish());
         return "add-dish";// that is the view .html
-        // it is get it just opens the form //one get to open page //one post to post data
+        // it is GET it just opens the form //one get to open page //one post to post data
     }
 
-    // save the dish //use post // same end pont because one is get/post
-        //POST
+    // save the dish
+    // use post // same end pont because one is get/post
+    // POST
     @PostMapping("/add-dish")
     public String addDish( @ModelAttribute Dish dish, Model model){
-        // saving in db
-        // dishService.saveDish(dish)
-        //model.addAttribute("dishes", dishService.getAllDishes()); // using DB you use this
-
-        if(dish.getPrice()>10){
+        if(dishService.saveDish(dish) == 1){
+            //redirect to menu and show added dish
+            return "redirect:/restaurant/dishes?message=dish added successfully!"; // so you do not need to repeat code
+        }   //else stay on add-dish page and show error message
             model.addAttribute("error", "Price must be Less than 10");
             return "add-dish";
-            //returns the same page dose not redirect
-        } //else redirect to menu and show added dish
-        model.addAttribute("dishes", dish);
-         return "menu"; // return menu show what you added
+
+
+
+
+
+        //saving in db
+        /*dishService.saveDish(dish);*/
+//        model.addAttribute("dishes", dishService.getAllDishes());
+//        model.addAttribute("message", "Dish added Successfully");
+//        model.addAttribute("dishes", dishService.getAllDishes()); //using DB you use this
+
+        //model.addAttribute("dishes", dishService.getAllDishes() /*dish*/);
+         //return "menu"; // return menu show what you added
+        /*return "redirect:/restaurant/dishes?message=dish added successfully!"; // so you do not need to repeat code*/
     }
 }//class
