@@ -12,7 +12,7 @@
         <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking Linking nav bar -->
         <div class="content">
             <h1 id="title">Menu</h1>
-
+            <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
             <table class="table table">
                 <thead>
                 <tr> <!-- headers -->
@@ -29,10 +29,8 @@
                     <td th:text="${dish.category}"></td>
                     <td th:text="${dish.price}"></td>
                 </tr>
-
                 </tbody>
             </table>
-
             <a style="margin-top: 10px" class="btn btn-primary" th:href="@{add-dish}">Add More Dishes!</a>
         </div>
     </div>
