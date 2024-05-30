@@ -11,8 +11,10 @@
     <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking -->
 
     <div class="content">
+
         <h1 id="title">Add A Dish</h1>
         <!-- Display error if dish price is > 10 -->
+
         <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
             <div class="form" >
                 <form method="POST" th:action="@{add-dish}" th:object="${dish}"> <!-- Action: That is a post end pont  -->
