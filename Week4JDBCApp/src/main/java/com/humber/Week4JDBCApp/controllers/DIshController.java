@@ -60,7 +60,7 @@ public class DIshController {
             //redirect to menu and show added dish
             return "redirect:/restaurant/dishes?message=dish added successfully!"; // so you do not need to repeat code
         }   //else stay on add-dish page and show error message
-            model.addAttribute("error", "Price must be Less than 10");
+            model.addAttribute("error", "Price must be Less than 20");
             return "add-dish";
 
 
