@@ -27,6 +27,7 @@
             <a class="btn btn-primary" th:href="@{/restaurant/menu}">Reset</a>
         </form>
 
+
         <table class="table table">
             <thead>
             <tr> <!-- headers -->
@@ -47,11 +48,9 @@
                 <td><a th:href="@{/restaurant/delete/{id}(id=${dish.id})}"
                        class="btn btn-danger btn-sm">X</a>
                 </td>
-
                 <td><a th:href="@{/restaurant/update/{id}(id=${dish.id})}"
-                       class="btn btn-danger btn-sm">...</a>
+                       class="btn btn-danger btn-sm">Edit</a>
                 </td>
-
             </tr>
             </tbody>
         </table>
