@@ -78,7 +78,7 @@ public class DishController {
         if (statusCode == 1){
             return "redirect:/restaurant/menu?message=dish added successfully!"; // so you do not need to repeat code
         } // else
-        return "redirect:/restaurant/menu?errormessage=dish not added!";
+        return "redirect:/restaurant/menu?errormessage=dish not added! Price is More Than 20!";
     }
 
     // delete a dish // need to change to GET cause html does not understand DELETE
@@ -87,28 +87,25 @@ public class DishController {
     public String deleteDish(@PathVariable int id){
         int deleteStatusCode = dishService.deleteDish(id);
         if(deleteStatusCode ==1) {
-            return "redirect:/restaurant/menu?message=dish deleted successfully!";
+            return "redirect:/restaurant/menu?message=The Dish has been Deleted Successfully!";
         }
-        return "redirect:/restaurant/menu?message=Dish to be Deleted Does not exsit!";
+        return "redirect:/restaurant/menu?errormessage=Dish to be Deleted Does not exist!";
     }
-
+    // update/change a dish
+    //GET  /restaurant/update/{id} // Same Add a Dish Page
+            // but with different name depending on conditions if fields have values or not
     @GetMapping("/update/{id}")
     public String updateDish (Model model, @PathVariable int id) {
         Optional<Dish> dishToUpdate;
         dishToUpdate = dishService.getDishById(id);
+        // showing values in form prefilled from existing data in database
         model.addAttribute("dish", dishToUpdate.orElse(null));
         return "add-dish";
     }
-
     //update a dish
     @PostMapping("/update-dish")
     public String updateDish(@ModelAttribute Dish dish) {
         dishService.updateDish(dish);
-
-        return "redirect:/restaurant/menu?message=dish updated successfully!";
+        return "redirect:/restaurant/menu?message=Dish Has Been Updated Successfully!";
     }
-
-
-
-
-}
+}//class
