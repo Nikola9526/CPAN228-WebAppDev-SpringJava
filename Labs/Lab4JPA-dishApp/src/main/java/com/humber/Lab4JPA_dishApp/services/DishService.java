@@ -14,13 +14,13 @@ public class DishService {
     // business logic
     private final DishRepository dishRepository;
 
-    // constructor Injection
+    //constructor Injection
     @Autowired
     public DishService(DishRepository dishRepository) {
         this.dishRepository = dishRepository;
     }
 
-    // get All Dishes
+    //get All Dishes
     public List<Dish> getAllDishes(){
         return dishRepository.findAll();
     }
@@ -51,8 +51,15 @@ public class DishService {
 
     //update a dish
     public void updateDish(Dish dish ){
+        //saves updated dish object fields back in database for same id where it all already exists
+            dishRepository.save(dish);
+    }
 
-
+    // get a dish by id
+    public Optional getDishById(int id){
+        return dishRepository.findById(id); // but no .get() now
+    }
+}
         /*Optional<Dish> existingDishOptional = dishRepository.findById(dish.getId());
         if(existingDishOptional.isPresent()) {
             Dish existingDish =  existingDishOptional.get();
@@ -65,15 +72,4 @@ public class DishService {
             // save back in repo db
             dishRepository.save(existingDish);
         } else {*/
-             //save updated dish back into repo dish
-            dishRepository.save(dish);
-
-
-
-    }
-
-    // get a dish by id
-    public Optional getDishById(int id){
-        return dishRepository.findById(id); // but no .get() now
-    }
-}
+//save updated dish back into repo dish
