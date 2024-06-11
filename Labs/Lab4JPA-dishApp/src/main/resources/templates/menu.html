@@ -26,8 +26,6 @@
             <button type="submit" class="btn btn-primary">Filter</button>
             <a class="btn btn-primary" th:href="@{/restaurant/menu}">Reset</a>
         </form>
-
-
         <table class="table table">
             <thead>
             <tr> <!-- headers -->
@@ -45,9 +43,13 @@
                 <td th:text="${dish.name}"></td>
                 <td th:text="${dish.category}"></td>
                 <td th:text="${dish.price}"></td>
+                <!--Showing delete link when clicked it gets id for that dish in that row
+                and calls the delete endpoint with that id -->
                 <td><a th:href="@{/restaurant/delete/{id}(id=${dish.id})}"
                        class="btn btn-danger btn-sm">X</a>
                 </td>
+                <!--Showing edit link when clicked it gets id for that dish in that row
+                and calls the update endpoint with that id -->
                 <td><a th:href="@{/restaurant/update/{id}(id=${dish.id})}"
                        class="btn btn-danger btn-sm">Edit</a>
                 </td>
