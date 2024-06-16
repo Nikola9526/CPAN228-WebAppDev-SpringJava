@@ -1,0 +1,57 @@
+.content {
+    margin: 100px;
+    min-height: 65vh;
+    padding: 5px;
+
+}
+.card {
+    width: 350px;
+    text-align: center;
+    margin: 100px auto;
+}
+#title {
+    color: cornflowerblue;
+    font-size: 35px;
+    padding-bottom: 10px;
+}
+.form-label{
+    font-weight: bold;
+}
+.form {
+    background-color: whitesmoke;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 15px 15px 8px 12px darkgrey;
+}
+
+#error {
+    color: red;
+}
+
+.pagination{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    bottom :40px;
+    width: 100%;
+}
+
+.pagination-info, .pagination-no{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.pagination-info div{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+.pagination-no div{
+    margin: 5px;
+    padding: 10px;
+}
+
+
+
