@@ -22,11 +22,9 @@ public class Lab5JPAFoodAppApplication implements CommandLineRunner {
 		SpringApplication.run(Lab5JPAFoodAppApplication.class, args);
 	}
 
-
 	@Override
 	public void run(String... args) throws Exception {
 		// anything here will excuite when app is run
-
 		System.out.println("Hello from CLR! \n Add Data to Database!");
 		dishService.saveDish(new Dish(1, "Pizza", "Non-Veg", 12.0));
 		dishService.saveDish(new Dish(2, "Burger", "Non-Veg", 8.5));
@@ -42,10 +40,6 @@ public class Lab5JPAFoodAppApplication implements CommandLineRunner {
 		dishService.saveDish(new Dish(12, "Lamb Chops", "Non-Veg", 20.0));
 
 		// id value dose not matter here, JPA will auto make id
-
 		System.out.println("All Dishes Saved!");
-
-
-
 	}
 }
