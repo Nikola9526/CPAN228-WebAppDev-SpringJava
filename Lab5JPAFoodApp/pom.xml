@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.humber</groupId>
-	<artifactId>Week6JPAFoodApp</artifactId>
+	<artifactId>Lab5JPAFoodApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Lab4JPA-dishApp</name>
-	<description>Week6JPAFoodApp </description>
+	<description>Lab5JPAFoodApp </description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
