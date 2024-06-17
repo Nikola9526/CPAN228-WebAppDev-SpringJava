@@ -1,9 +1,10 @@
-package com.humber.Lab4JPA_dishApp.controllers;
+package com.humber.Lab5JPAFoodApp.controllers;
 
-import com.humber.Lab4JPA_dishApp.models.Dish;
-import com.humber.Lab4JPA_dishApp.services.DishService;
+import com.humber.Lab5JPAFoodApp.models.Dish;
+import com.humber.Lab5JPAFoodApp.services.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/restaurant") // for apis localhost:8080
+@RequestMapping("/restaurant") //for apis localhost:8080
 public class DishController {
 
     private final DishService dishService;
@@ -26,6 +27,9 @@ public class DishController {
     @Value("${restaurant.name}")
     private String name;
 
+    @Value("${page.size}")
+    private int pageSize;
+
     //home-page
     //GET /restaurant/home
     @GetMapping("/home") //for methods
@@ -34,40 +38,49 @@ public class DishController {
         return "home";
     }
 
-    // menu page
+    //menu page
     //GET /restaurant/menu
-    @GetMapping("/menu")
+    @GetMapping("/menu/{pageNo}") // @PathVariable
     public String getAllDishes(Model model,
                                @RequestParam (required=false) String message,
                                @RequestParam (required = false) String errormessage,
                                @RequestParam (required = false) String searchCategory,
-                               @RequestParam (required = false) Double searchPrice){
-        if ( searchCategory == null && searchPrice != null){
-            List<Dish> filteredDishes = dishService.getFilteredDishes(searchCategory,  searchPrice);
-            model.addAttribute("dishes", filteredDishes.isEmpty()? dishService.getAllDishes() : filteredDishes );
-            model.addAttribute("message", filteredDishes.isEmpty()? "Data was Not Filtered!" : "Data Filtered Successfully!");
+                               @RequestParam (required = false) Double searchPrice,
+                               @PathVariable int pageNo,
+                               @RequestParam (required = false) String sortField,
+                               @RequestParam (required = false) String sortDirection){ // has to be false so first click on menu it does not sort
+
+        // give default values to sort field and sort direction
+        sortField = sortField == null ? "id" : sortField;
+        sortDirection = sortDirection == null ? "asc" : sortDirection;
+
+
+           if (searchCategory != null && searchPrice != null) {
+               // get only paginated dishes that the category and price that was entered //& pagination info
+               // showing all filtered dished on one page
+               Page<Dish> filterPage = dishService.getPaginatedDishesFiltered(50,pageNo,searchCategory, searchPrice);
+
+               model.addAttribute("dishes",filterPage.getContent() );
+               model.addAttribute("totalPages",filterPage.getTotalPages());
+               model.addAttribute("currentPage", pageNo);
+               model.addAttribute("totalItems", filterPage.getTotalElements());
+               model.addAttribute("message", filterPage.getContent().isEmpty()? "Data was Not Filtered!" : "Data Filtered Successfully!");
+               model.addAttribute("errormessage", errormessage);
             return "menu";
-
-
-
-        }  else if (searchCategory != null && searchPrice == null) {
-            List<Dish> filteredDishes = dishService.getFilteredDishes(searchCategory,  searchPrice);
-            model.addAttribute("dishes", filteredDishes.isEmpty()? dishService.getAllDishes() : filteredDishes );
-            model.addAttribute("message", filteredDishes.isEmpty()? "Data was Not Filtered!" : "Data Filtered Successfully!");
-            return "menu";
-
-        } else if (searchCategory != null && searchPrice != null) {
-            // return back filtered dishes from the service layer
-            List<Dish> filteredDishes = dishService.getFilteredDishes( searchCategory, searchPrice);
-            model.addAttribute ("dishes", filteredDishes.isEmpty()? dishService.getAllDishes() : filteredDishes );
-            model.addAttribute("message", filteredDishes.isEmpty()? "Data was Not Filtered!" : "Data Filtered Successfully!");
-            return "menu";
-
-
         }
+            //get All paginated dishes from the service layer //pagination info
+            Page<Dish> page = dishService.getPaginatedDishes(pageSize,pageNo,sortField,sortDirection ); // page NUm comes from path variable
 
+        model.addAttribute("dishes", page.getContent());
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalItems", page.getTotalElements());
 
-        model.addAttribute("dishes", dishService.getAllDishes());
+        // sorting info // to put in front end .html
+        model.addAttribute("sortField", sortField);
+        model.addAttribute("sortDirection", sortDirection);
+        model.addAttribute("reverseSortDirection", sortDirection.equals("asc")? "desc" : "asc");
+
         model.addAttribute("message", message);
         model.addAttribute("errormessage", errormessage);
 
@@ -84,7 +97,7 @@ public class DishController {
         // it is GET it just opens the form //one get to open page //one post to post data
     }
 
-    // save the dish
+    //save the dish
     //POST
     @PostMapping("/add-dish")
     public String addDish(@ModelAttribute Dish dish, Model model){
@@ -92,9 +105,9 @@ public class DishController {
         int statusCode = dishService.saveDish(dish);
         // 1 for success, 0 for fail
         if (statusCode == 1){
-            return "redirect:/restaurant/menu?message=dish added successfully!"; // so you do not need to repeat code
+            return "redirect:/restaurant/menu/1?message=dish added successfully!"; // so you do not need to repeat code
         } // else
-        return "redirect:/restaurant/menu?errormessage=dish not added! Price is More Than 20!";
+        return "redirect:/restaurant/menu/1?errormessage=dish not added! Price is More Than 20!";
     }
 
     // delete a dish // need to change to GET cause html does not understand DELETE
@@ -103,9 +116,9 @@ public class DishController {
     public String deleteDish(@PathVariable int id){
         int deleteStatusCode = dishService.deleteDish(id);
         if(deleteStatusCode ==1) {
-            return "redirect:/restaurant/menu?message=The Dish has been Deleted Successfully!";
+            return "redirect:/restaurant/menu/1?message=The Dish has been Deleted Successfully!";
         }
-        return "redirect:/restaurant/menu?errormessage=Dish to be Deleted Does not exist!";
+        return "redirect:/restaurant/menu/1?errormessage=Dish to be Deleted Does not exist!";
     }
     // update/change a dish
     //GET  /restaurant/update/{id} // Same Add a Dish Page
@@ -123,6 +136,6 @@ public class DishController {
     @PostMapping("/update-dish")
     public String updateDish(@ModelAttribute Dish dish) {
         dishService.updateDish(dish);
-        return "redirect:/restaurant/menu?message=Dish Has Been Updated Successfully!";
+        return "redirect:/restaurant/menu/1?message=Dish Has Been Updated Successfully!";
     }
 }//class
