@@ -1,7 +1,7 @@
-package com.humber.Week6JPAFoodApp.services;
+package com.humber.Lab5JPAFoodApp.services;
 
-import com.humber.Week6JPAFoodApp.models.Dish;
-import com.humber.Week6JPAFoodApp.repositories.DishRepository;
+import com.humber.Lab5JPAFoodApp.models.Dish;
+import com.humber.Lab5JPAFoodApp.repositories.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,11 +24,6 @@ public class DishService {
         this.dishRepository = dishRepository;
     }
 
-    //get All Dishes
-    public List<Dish> getAllDishes(){
-        return  dishRepository.findAll();
-    }
-
 
     // save a dish
     public int saveDish(Dish dish){
@@ -37,26 +32,6 @@ public class DishService {
             return 1; // success response
         } // else
         return 0; // false failure
-    }
-
-
-
-    //get filtered dishes
-    public List<Dish> getFilteredDishes ( String searchCategory, Double searchPrice) {
-        if(searchCategory != null &&  searchPrice == null) {
-            return dishRepository.findByCategory(searchCategory);
-
-        }  else if(searchCategory == null && searchPrice != null) {
-            dishRepository.findByPrice(searchPrice);
-        }
-            return dishRepository.findByCategoryAndPrice(searchCategory, searchPrice );
-
-
-    }
-
-
-    public List <Dish> getFilteredPrice( Double lower, Double upper) {
-        return dishRepository.findByPriceBetween( lower, upper);
     }
 
     //delete a dish
@@ -79,35 +54,20 @@ public class DishService {
     public Optional getDishById(int id){
         return dishRepository.findById(id); // but no .get() now
     }
+
     //pagination and Sorting Method
     public Page<Dish> getPaginatedDishes(int pageSize, int pageNo, String sortField, String sortDirection) {
         // sort the data based on the sort field and sort direction
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name())? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
 
-
-
-        Pageable pageable = PageRequest.of(pageNo-1, pageSize, sort); // the index starts at 0 so (num -1)
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize, sort); //the index starts at 0 so (num -1)
         return dishRepository.findAll(pageable);
         //returns page of dishes
     }
 
-    // new
-    public  Page<Dish> getDishesByCategory(String category, Pageable pageable){
-        return dishRepository.findByCategory(category, pageable);
+    public Page <Dish> getPaginatedDishesFiltered(int pageSize, int pageNo, String searchCategory, Double searchPrice) {
+            Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+            return dishRepository.findByCategoryAndPrice(searchCategory, searchPrice, pageable);
     }
-
-
-}
-        /*Optional<Dish> existingDishOptional = dishRepository.findById(dish.getId());
-        if(existingDishOptional.isPresent()) {
-            Dish existingDish =  existingDishOptional.get();
-
-            // update
-            existingDish.setName(dish.getName());
-            existingDish.setPrice(dish.getPrice());
-            existingDish.setCategory(dish.getCategory());
-
-            // save back in repo db
-            dishRepository.save(existingDish);
-        } else {*/
 //save updated dish back into repo dish
+}
