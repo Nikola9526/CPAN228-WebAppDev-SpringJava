@@ -1,8 +1,12 @@
-package com.humber.Lab4JPA_dishApp.services;
+package com.humber.Week6JPAFoodApp.services;
 
-import com.humber.Lab4JPA_dishApp.models.Dish;
-import com.humber.Lab4JPA_dishApp.repositories.DishRepository;
+import com.humber.Week6JPAFoodApp.models.Dish;
+import com.humber.Week6JPAFoodApp.repositories.DishRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +39,8 @@ public class DishService {
         return 0; // false failure
     }
 
+
+
     //get filtered dishes
     public List<Dish> getFilteredDishes ( String searchCategory, Double searchPrice) {
         if(searchCategory != null &&  searchPrice == null) {
@@ -43,10 +49,11 @@ public class DishService {
         }  else if(searchCategory == null && searchPrice != null) {
             dishRepository.findByPrice(searchPrice);
         }
-            return dishRepository.findByCategoryAndPrice(searchCategory, searchPrice);
+            return dishRepository.findByCategoryAndPrice(searchCategory, searchPrice );
 
 
     }
+
 
     public List <Dish> getFilteredPrice( Double lower, Double upper) {
         return dishRepository.findByPriceBetween( lower, upper);
@@ -72,6 +79,24 @@ public class DishService {
     public Optional getDishById(int id){
         return dishRepository.findById(id); // but no .get() now
     }
+    //pagination and Sorting Method
+    public Page<Dish> getPaginatedDishes(int pageSize, int pageNo, String sortField, String sortDirection) {
+        // sort the data based on the sort field and sort direction
+        Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name())? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+
+
+
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize, sort); // the index starts at 0 so (num -1)
+        return dishRepository.findAll(pageable);
+        //returns page of dishes
+    }
+
+    // new
+    public  Page<Dish> getDishesByCategory(String category, Pageable pageable){
+        return dishRepository.findByCategory(category, pageable);
+    }
+
+
 }
         /*Optional<Dish> existingDishOptional = dishRepository.findById(dish.getId());
         if(existingDishOptional.isPresent()) {

@@ -1,13 +1,13 @@
-package com.humber.Lab4JPA_dishApp;
+package com.humber.A2_Clothes_Warehouse_JPA_App;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Week6JPAFoodAppApplication {
+public class A2ClothesWarehouseJpaAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Week6JPAFoodAppApplication.class, args);
+		SpringApplication.run(A2ClothesWarehouseJpaAppApplication.class, args);
 	}
 
 }

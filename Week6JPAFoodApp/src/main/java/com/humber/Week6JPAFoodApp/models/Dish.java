@@ -1,4 +1,4 @@
-package com.humber.Lab4JPA_dishApp.models;
+package com.humber.Week6JPAFoodApp.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
