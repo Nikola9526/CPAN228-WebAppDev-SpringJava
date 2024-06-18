@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="main">
+    <header th:include="@{/fragments/header.html}"></header>
+    <div class="content">
+        <div class="home-card">
+            <h1 >Welcome to <span th:text="${store}"></span></h1>
+            <!-- Showing Name of Store using Constant from Controller -->
+        </div>
+        <div class="container text-center mt-5" >
+            <div class="d-flex justify-content-center">
+                <a   th:href="@{/warehouse/inventory/1}" class="btn btn-primary btn-lg custom-btn mx-3">Browse Inventory</a>
+                <a  th:href="@{/warehouse/add-item}" class="btn btn-primary btn-lg custom-btn mx-3"> Add Item</a>
+            </div>
+        </div>
+    </div>
+    <footer th:include="@{/fragments/footer.html}"></footer>
+</div>
+</body>
+</html>
