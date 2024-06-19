@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"> <!-- here it is @ symbol -->
+</head>
+<body>
+<!-- DRY   -->
+<div class="main">
+    <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking Linking nav bar -->
+    <div class="content">
+        <h1 id="title">Menu</h1>
+        <div th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert" th:text="${message}" ></div>
+        <div th:if="${errormessage}" class="alert alert-danger" role="alert" th:text="${errormessage}"></div>
+        <form th:action="@{/restaurant/menu/1}" method="get">
+            <input type="text" name="searchCategory" placeholder="Category" />
+            <input type="number" name="searchPrice" placeholder="Price" />
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a class="btn btn-primary" th:href="@{/restaurant/menu/1}">Reset</a>
+        </form>
+        <table class="table table">
+            <thead>
+            <tr> <!-- headers -->
+                <th scope="col">
+                    <!-- /restaurant/menu/ + 1 + ?sortField=id&sortDirection= + asc     1 can not be static be dynamic -->
+                    <a th:href="@{'/restaurant/menu/' +${currentPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                </th>
+                <th scope="col">
+                    <!-- /restaurant/menu/ + 1 + ?sortField=name&sortDirection= + asc     1 can not be static be dynamic -->
+                    <a th:href="@{'/restaurant/menu/' +${currentPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                </th>
+                <th scope="col">
+                    <!-- /restaurant/menu/ + 1 + ?sortField=name&sortDirection= + asc     1 can not be static be dynamic -->
+                    <a th:href="@{'/restaurant/menu/' +${currentPage} + '?sortField=category&sortDirection=' + ${reverseSortDirection}}">Category</a>
+                </th>
+                <th scope="col">
+                    <!-- /restaurant/menu/ + 1 + ?sortField=name&sortDirection= + asc     1 can not be static be dynamic -->
+                    <a th:href="@{'/restaurant/menu/' +${currentPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                </th>
+                <th scope="col" >Delete</th>
+                <th scope="col" >Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="dish : ${dishes}">
+                <td th:text="${dish.id}"></td>
+                <td th:text="${dish.name}"></td>
+                <td th:text="${dish.category}"></td>
+                <td th:text="${dish.price}"></td>
+                <!--Showing delete link when clicked it gets id for that dish in that row
+                and calls the delete endpoint with that id -->
+                <td><a th:href="@{/restaurant/delete/{id}(id=${dish.id})}"
+                       class="btn btn-danger btn-sm">X</a>
+                </td>
+                <!--Showing edit link when clicked it gets id for that dish in that row
+                and calls the update endpoint with that id -->
+                <td><a th:href="@{/restaurant/update/{id}(id=${dish.id})}"
+                       class="btn btn-danger btn-sm">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a style="margin-top: 10px" class="btn btn-primary" th:href="@{/restaurant/add-dish}">Add More Dishes!</a>
+    </div>
+    <!-- pagination -->
+    <div class="pagination">
+        <div class="pagination-info">
+            <div>Total Dishes: <span th:text="${totalItems}"></span></div>
+            <div>Current Page: <span th:text="${currentPage}"></span></div>
+            <div>Total Pages: <span th:text="${totalPages}"></span></div>
+        </div>
+        <div class="pagination-no">
+            <div th:each="i:${#numbers.sequence(1, totalPages)}">
+                <!-- /restaurant/menu/ + i +?sortField=sortField&sortDirection -->
+                <a th:href="@{'/restaurant/menu/' + ${i} + '?sortField' + ${sortField} + '&sortDirection=' + ${sortDirection} }"  th:text="${i}"></a>
+            </div>
+        </div>
+    </div>
+    <footer th:include="@{/fragments/footer.html}"></footer>
+</div>
+</body>
+<!-- View -->
+</html>
