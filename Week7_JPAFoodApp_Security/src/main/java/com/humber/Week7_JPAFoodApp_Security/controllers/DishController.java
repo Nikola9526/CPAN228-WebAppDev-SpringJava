@@ -28,12 +28,14 @@ public class DishController {
 
     @Value("${page.size}")
     private int pageSize;
+//   only Menu and Home here
 
     //home-page
     //GET /restaurant/home
     @GetMapping("/home") //for methods
-    public String home(Model model){
+    public String home(Model model , @RequestParam(required = false) String message){
         model.addAttribute("restaurantName", name);
+        model.addAttribute("message", message);
         return "home";
     }
 
@@ -89,54 +91,4 @@ public class DishController {
        return "menu";
     }
 
-    // add a method
-    //GET /restaurant/add-dish
-    @GetMapping("/add-dish") // Add a Dish Page "View- add-dish"
-    public String addDish(Model model){
-        model.addAttribute("dish", new Dish());
-        return "add-dish";
-        // it is GET it just opens the form //one get to open page //one post to post data
-    }
-
-    //save the dish
-    //POST
-    @PostMapping("/add-dish")
-    public String addDish(@ModelAttribute Dish dish, Model model){
-        // saving in db
-        int statusCode = dishService.saveDish(dish);
-        // 1 for success, 0 for fail
-        if (statusCode == 1){
-            return "redirect:/restaurant/menu/1?message=dish added successfully!"; // so you do not need to repeat code
-        } // else
-        return "redirect:/restaurant/menu/1?errormessage=dish not added! Price is More Than 20!";
-    }
-
-    // delete a dish // need to change to GET cause html does not understand DELETE
-    //@DeleteMapping("/delete/{id}") // this is path variable in {id} in curly braces
-    @GetMapping("/delete/{id}") // this is path variable in {id} in curly braces
-    public String deleteDish(@PathVariable int id){
-        int deleteStatusCode = dishService.deleteDish(id);
-        if(deleteStatusCode ==1) {
-            return "redirect:/restaurant/menu/1?message=The Dish has been Deleted Successfully!";
-        }
-        return "redirect:/restaurant/menu/1?errormessage=Dish to be Deleted Does not exist!";
-    }
-    // update/change a dish
-    //GET  /restaurant/update/{id} // Same Add a Dish Page
-            // but with different name depending on conditions if fields have values or not
-    @GetMapping("/update/{id}")
-    public String updateDish (Model model, @PathVariable int id) {
-        Optional<Dish> dishToUpdate;
-        dishToUpdate = dishService.getDishById(id);
-
-        // showing values in form prefilled from existing data in database
-        model.addAttribute("dish", dishToUpdate.orElse(null));
-        return "add-dish";
-    }
-    //update a dish
-    @PostMapping("/update-dish")
-    public String updateDish(@ModelAttribute Dish dish) {
-        dishService.updateDish(dish);
-        return "redirect:/restaurant/menu/1?message=Dish Has Been Updated Successfully!";
-    }
 }//class
