@@ -30,10 +30,27 @@
     }    </style>
 </head>
 <body>
-<div><header th:include="@{/fragments/header.html}"></header></div>
+<div><!--<header th:include="@{/fragments/header.html}"></header>-->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-white mb-4" >
+            <div  class="container">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a  class="nav-link"  th:href="@{/restaurant/home}">Home</a>
+                    </li>
+
+                    <!-- Register Button Added -->
+                    <li class="nav-item" >
+                        <a  class="nav-link" th:href="@{/registers}">Register Now</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
         <div class="login-body" >
             <div class="login-main">
-                <h1 class="login-h1">Log In To <span th:text="${restaurantName}"></span></h1>
+                <h1 >Log In To <span class="login-h1" th:text="${restaurantName}"></span></h1>
 
                 <div th:if="${param.error}" class="alert alert-danger"> Invalid username and password.</div>
                 <div  th:if="${message}"  th:text="${message}" class="alert alert-warning"></div>
@@ -42,6 +59,9 @@
                     <div><input type="text" name="username" placeholder="Username"/></div>
                     <div><input type="password" name="password" placeholder="Password"/></div>
                     <input type="submit" value="Log in"/>
+                    <div class="alert">
+                        <a class="nav-link" th:href="@{/registers}">Register</a>
+                    </div>
                 </form>
             </div>
         </div>
