@@ -8,7 +8,35 @@
 </head>
 <body>
 <div class="body">
-    <header th:include="@{/fragments/header.html}"></header> <!-- @ is for linking -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-white mb-4" >
+            <div  class="container">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a  class="nav-link"  th:href="@{/restaurant/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${isAuthenticated}"  class="nav-link"  th:href="@{/restaurant/menu/1}">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${isAuthenticated}"  class="nav-link" th:href="@{/restaurant/admin/add-dish}">Add Dish</a>
+                    </li>
+                    <!-- Log Out Button Added -->
+                    <li class="nav-item" >
+                        <a th:if="${isAuthenticated}" class="nav-link" th:href="@{/logout}">LogOut</a>
+                    </li>
+                     <!-- Login Button Added -->
+                    <li class="nav-item" >
+                        <a th:if="${!isAuthenticated}" class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                     <!--Register Link -->
+                    <li class="nav-item" >
+                        <a th:if="${!isAuthenticated}" class="nav-link" th:href="@{/registers}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="content">
         <div class="alert alert-info" role="alert" th:if="${message}"><span th:text="${message}"></span></div>
         <div class="card">
