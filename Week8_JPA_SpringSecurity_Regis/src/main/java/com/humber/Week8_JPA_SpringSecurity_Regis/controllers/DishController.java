@@ -27,8 +27,7 @@ public class DishController {
     private String name;
     @Value("${page.size}")
     private int pageSize;
-//   only Menu and Home here
-
+//only Menu and Home here
     //home-page
     //GET /restaurant/home
     @GetMapping("/home") //for methods
@@ -95,5 +94,4 @@ public class DishController {
        // to pass dishes from back to front end
        return "menu";
     }
-
 }//class
