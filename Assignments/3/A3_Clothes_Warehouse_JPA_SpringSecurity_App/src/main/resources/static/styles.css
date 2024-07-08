@@ -2,32 +2,36 @@
     margin: 100px;
     min-height: 65vh;
     padding: 5px;
+}
 
+.home-card{
+    background-color: rgb(34 37 41) ;
+    color: whitesmoke;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 15px 15px 8px 12px darkgrey;
+    margin: 50px;
 }
-.card {
-    width: 350px;
-    text-align: center;
-    margin: 100px auto;
-}
+
 #title {
     color: cornflowerblue;
     font-size: 35px;
     padding-bottom: 10px;
 }
-.form-label{
+#label {
     font-weight: bold;
 }
-.form {
+
+#home-buttons {
+    flex-direction: row;
+}
+
+.add-item-form {
     background-color: whitesmoke;
     padding: 50px;
     border-radius: 50px;
     box-shadow: 15px 15px 8px 12px darkgrey;
 }
-
-#error {
-    color: red;
-}
-
 .pagination{
     text-align: center;
     display: flex;
@@ -36,12 +40,18 @@
     position: fixed;
     bottom :40px;
     width: 100%;
+
+
 }
+
 
 .pagination-info, .pagination-no{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+
+
 
 }
 .pagination-info div{

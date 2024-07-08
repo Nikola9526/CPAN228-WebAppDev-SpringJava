@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="main">
+    <header th:include="@{/fragments/header.html}"></header>
+    <div class="content">
+        <h1 id="title">Store Inventory</h1>
+        <div id="alertBox"  th:if="${message}" class="alert alert-success alert-dismissible fade show" role="alert"  th:text="${message}"></div>
+        <div id="alertBox"  th:if="${errormessage}" class="alert alert-danger" role="alert" th:text="${errormessage}"></div>
+        <!-- Form to Filter By Brand or Price -->
+        <form style="margin-bottom: 30px" th:action="@{/warehouse/inventory/1}" method="get">
+            <input type="text" name="searchBrand" placeholder="Search By Brand" />
+            <input type="number" name="searchPrice" placeholder="Search By The Price" />
+            <button type="submit" class="btn btn-primary">Filter</button>
+            <a class="btn btn-primary" th:href="@{/warehouse/inventory/1}">Reset</a>
+        </form>
+
+        <table class="table table">
+            <thead>
+            <tr> <!--Headers
+             Allows to Click, and Sorts the Column either in Asc, or Desc-->
+                <th scope="col">
+                    <!-- /warehouse/inventory/ + 1 + ?sortField=id&sortDirection= + asc     1 can not be static be dynamic -->
+                    <a th:href="@{'/warehouse/inventory/' + ${currentPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">
+                        ID </a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/warehouse/inventory/' + ${currentPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">
+                        Name</a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/warehouse/inventory/' + ${currentPage} + '?sortField=brand&sortDirection=' + ${reverseSortDirection}}">
+                        Brand</a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/warehouse/inventory/' + ${currentPage} + '?sortField=year_creation&sortDirection=' + ${reverseSortDirection}}">
+                        Year</a>
+                </th>
+                <th scope="col">
+                    <a th:href="@{'/warehouse/inventory/' + ${currentPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">
+                        Price</a>
+                </th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Looping though the Database data (JPA) with for each loop to display it in the table -->
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.brand}"></td>
+                <td th:text="${item.year_creation}"></td>
+                <td th:text="${item.price}"></td>
+
+                <td><a th:href="@{/warehouse/delete/{id}(id=${item.id})}"
+                       class="btn btn-danger btn-sm">X</a>
+                </td>
+                <td><a th:href="@{/warehouse/update/{id}(id=${item.id})}"
+                       class="btn btn-danger btn-sm">Edit</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- pagination -->
+    <div class="pagination">
+        <div class="pagination-info">
+            <div>Products In Inventory:<span th:text="${totalItems}"></span></div>
+            <div>Current Page:<span th:text="${currentPage}"></span></div>
+            <div>Total Pages: <span th:text="${totalPages}"></span></div>
+        </div>
+        <!-- Shows Numbers, at bottom of page to navigate to different pages -->
+        <div class="pagination-no">
+            <div class="page-item" th:each="i:${#numbers.sequence(1,totalPages)}">
+                <a class="page-link" th:href="@{'/warehouse/inventory/' + ${i} + '?sortField' + ${sortField} + '&sortDirection=' + ${sortDirection}}" th:text="${i}"></a>
+            </div>
+        </div>
+
+    </div>
+    <footer th:include="@{/fragments/footer.html}"></footer>
+</div>
+<!-- Timeout Function to make Alert Disappear after 5 seconds -->
+<script>
+    setTimeout(function () {
+        const alertBox = document.getElementById('alertBox');
+        if (alertBox) {
+            alertBox.style.display= 'none';
+        }
+    }, 5000);
+</script>
+</body>
+</html>
