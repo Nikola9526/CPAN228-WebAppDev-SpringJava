@@ -38,6 +38,7 @@ public class A3_Clothes_Warehouse_JPA_SpringSecurity_AppApplication implements C
 		itemService.saveItem(new Item(11, "Blazer", Brand.LouisVuitton, 2016, 250));
 		itemService.saveItem(new Item(12, "Polo Shirt", Brand.Guess, 2019, 60));
 		itemService.saveItem(new Item(13, "Hoodie", Brand.Balenciaga, 2022, 180));
+		itemService.saveItem(new Item(14, "Pink Velour Tracksuit Set", Brand.JuicyCouture, 2024, 120));
 
 		System.out.println("All Items Saved!");
 	}
