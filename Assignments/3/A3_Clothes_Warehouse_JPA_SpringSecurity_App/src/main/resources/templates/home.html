@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/styles.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div class="main">
-    <header th:include="@{/fragments/header.html}"></header>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark text-white mb-4" >
+            <div  class="container">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a   class="nav-link"  th:href="@{/warehouse/home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${isAuthenticated}"  class="nav-link"  th:href="@{/warehouse/inventory/1}">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${isAuthenticated}"  class="nav-link"  th:href="@{/warehouse/admin/add-item}">Add Item</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${!isAuthenticated}"  class="nav-link"  th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a th:if="${isAuthenticated}"  class="nav-link"  th:href="@{/logout}">Logout</a>
+                    </li>
+                    <!-- Register Button Added -->
+                    <li class="nav-item" >
+                        <a th:if="${!isAuthenticated}" class="nav-link" th:href="@{/registering}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--<header th:include="@{/fragments/header.html}"></header>-->
     <div class="content">
         <div class="home-card">
             <h1 >Welcome to <span th:text="${store}"></span></h1>
@@ -17,7 +44,7 @@
         <div class="container text-center mt-5" >
             <div class="d-flex justify-content-center">
                 <a   th:href="@{/warehouse/inventory/1}" class="btn btn-primary btn-lg custom-btn mx-3">Browse Inventory</a>
-                <a  th:href="@{/warehouse/add-item}" class="btn btn-primary btn-lg custom-btn mx-3"> Add Item</a>
+                <a  th:href="@{/warehouse/admin/add-item}" class="btn btn-primary btn-lg custom-btn mx-3"> Add Item</a>
             </div>
         </div>
     </div>
