@@ -1,10 +1,10 @@
-package com.humber.Week9SpringRestAPI;
+package com.humber.FinalProject_userBlog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Week9SpringRestApiApplicationTests {
+class FinalProjectUserBlogApplicationTests {
 
 	@Test
 	void contextLoads() {
