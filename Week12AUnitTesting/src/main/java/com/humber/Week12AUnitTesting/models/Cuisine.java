@@ -1,4 +1,4 @@
-package com.humber.Week9SpringRestAPI.models;
+package com.humber.Week12AUnitTesting.models;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
