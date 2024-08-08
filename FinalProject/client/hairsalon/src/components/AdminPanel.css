@@ -1,0 +1,48 @@
+.admin-panel {
+    padding: 20px;
+  }
+  
+  .admin-panel h1 {
+    color: white; /* Make the text white */
+  }
+  
+  .add-button {
+    margin-bottom: 20px;
+    padding: 16px 32px; /* Doubled padding for a larger button */
+    background-color: green;
+    border: none;
+    cursor: pointer;
+    width: auto; /* Ensures the width is only as wide as the content */
+    display: block; /* Ensures the button takes up the full width available */
+  }
+  
+  .add-button + .services-table {
+    margin-top: 20px; /* Adds space between the add button and the table */
+  }
+  
+  table {
+    width: 80%; /* Reduced width for shorter table */
+    margin: 0 auto; /* Centers the table horizontally */
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 2px solid black;
+    padding: 20px; /* Increased padding for larger cells */
+    text-align: left;
+  }
+  
+  .edit-button, .delete-button {
+    padding: 10px 16px; /* Doubled padding for a larger button */
+    margin-right: 10px; /* Increased margin for more space between buttons */
+    cursor: pointer;
+    width: auto; /* Ensures the width is only as wide as the content */
+  }
+  
+
+
+
+  
+  
+  
+  

@@ -1,0 +1,42 @@
+.services-container {
+  margin: 40px auto;
+  width: 80%;
+  text-align: center;
+}
+
+.services-header {
+  color: white; /* Make the text white */
+  font-size: 3rem; /* Twice as large as the default font size */
+  margin-bottom: 20px; /* Add some space below the header */
+}
+
+.services-table {
+  width: 100%;
+  border-collapse: collapse; /* table cell spacing */
+  border: 3px solid #000; /* table border */
+}
+
+.services-table th, .services-table td {
+  border: 3px solid #000; /* cell borders */
+  padding: 12px; /* cell padding */
+  text-align: left;
+  font-size: 2rem; /* Increase font size for table text */
+}
+
+.services-table th {
+  background-color: #f2f2f2; 
+  font-weight: bold;
+}
+
+.services-table td {
+  background-color: #ffffff; 
+}
+
+.services-table tr:nth-child(even) {
+  background-color: #f9f9f9; 
+}
+
+
+
+
+  

@@ -1,0 +1,146 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(103,99,103);
+  background: linear-gradient(90deg, rgba(103,99,103,1) 0%, rgba(95,99,106,1) 22%, rgba(176,97,175,1) 100%);
+  position: relative; 
+}
+
+form {
+  background: white;
+  margin-bottom: 150px;
+  padding: 40px; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px; /* form width */
+}
+
+h2 {
+  margin-bottom: 20px;
+  margin-top: -15px;
+  font-size: 3rem;
+}
+
+.input-group {
+  margin-bottom: 20px; /* space between inputs */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 12px; /* padding inside inputs */
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e363aa; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; 
+  text-transform: none; /* make sure text is not transforming*/
+}
+
+button:hover {
+  background-color: #d54f95; 
+}
+
+button:active {
+  background-color: #c43b8a; 
+}
+
+button:focus {
+  outline: none; 
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); 
+}
+
+.admin-link {
+  position: absolute;
+  bottom: 70px; 
+  left: 20px;
+}
+
+.admin-button {
+  width: 100px; 
+  height: auto;
+  cursor: pointer;
+  margin-bottom: 27px;
+}
+
+.register-link {
+  display: block;
+  margin-top: 10px; 
+}
+
+.register-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #c43b8a; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; 
+  text-transform: none; /* Ensure text is not transformed to uppercase */
+}
+
+.login-button {
+  text-transform: none; /* transform issues */
+}
+
+.register-button:hover {
+  background-color: #c43b8a; 
+}
+
+.register-button:active {
+  background-color: #c43b8a; 
+}
+
+.register-button:focus {
+  outline: none; 
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.2); 
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 128, 0, 0.7); /* Green background with transparency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+

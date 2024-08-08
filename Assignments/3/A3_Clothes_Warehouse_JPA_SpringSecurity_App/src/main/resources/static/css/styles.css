@@ -64,5 +64,36 @@
     padding: 10px;
 }
 
+/*Login Page*/
 
+.login-body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
+.login-main {
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 15px 15px 15px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 50px;
+}
+
+.login-h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.login-alert {
+    margin-bottom: 20px;
+}
+.login-form  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
